@@ -65,7 +65,7 @@ function convertGenerator() {
     let input = document.querySelector("#input-generator").value;
 
     let error_container = document.querySelector("#error-generator");
-    validateInput("generator", input, error_container);
+    if (!validateInput("generator", input, error_container)) return;
 
     if (document.querySelectorAll("input[type=radio][name=mode-generator]:checked").length === 0) {
         error_container.textContent = "Error: Please select a BCD format.";
@@ -91,7 +91,7 @@ function convertTranslator() {
     let input = document.querySelector("#input-translator").value;
 
     let error_container = document.querySelector("#error-translator");
-    validateInput("translator", input, error_container);
+    if (!validateInput("translator", input, error_container)) return;
 
     let output = document.querySelector("#output-translator");
 
