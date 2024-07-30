@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.querySelectorAll("input[type=radio][name=mode-generator]").forEach(bcd_mode_radio => bcd_mode_radio.addEventListener("change", function() {
         document.querySelector("#error-generator").textContent = "";
-    }))
+    }));
 })
 
 function resetForm(e) {
