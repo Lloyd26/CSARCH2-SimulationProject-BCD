@@ -39,11 +39,11 @@
                     <div class="mb-3">
                         <div class="btn-group">
                             <input type="radio" class="btn-check" name="mode-generator" id="mode-unpacked">
-                            <label for="mode-unpacked" class="btn btn-outline-primary ripple" data-ripple-theme="var(--clr-primary)">Unpacked BCD</label>
+                            <label for="mode-unpacked" class="btn btn-outline-primary ripple" data-ripple-theme="dark">Unpacked BCD</label>
                             <input type="radio" class="btn-check" name="mode-generator" id="mode-packed">
-                            <label for="mode-packed" class="btn btn-outline-primary ripple" data-ripple-theme="var(--clr-primary)">Packed BCD</label>
+                            <label for="mode-packed" class="btn btn-outline-primary ripple" data-ripple-theme="dark">Packed BCD</label>
                             <input type="radio" class="btn-check" name="mode-generator" id="mode-densely-packed">
-                            <label for="mode-densely-packed" class="btn btn-outline-primary ripple" data-ripple-theme="var(--clr-primary)">Densely Packed BCD</label>
+                            <label for="mode-densely-packed" class="btn btn-outline-primary ripple" data-ripple-theme="dark">Densely Packed BCD</label>
                         </div>
                     </div>
                     <div class="mb-3 footer-container">
@@ -59,7 +59,7 @@
                 <div class="card p-5">
                     <h2 class="text-center card-title">Output</h2>
                     <div class="output-container">
-                        <div class="output-result" data-result="false">XXXXXXXXXX</div>
+                        <div class="output-result" id="output-generator" data-result="false">XXXXXXXXXX</div>
                         <div class="output-description">Format: Binary-Coded Decimal (BCD)</div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                 <div class="card p-5">
                     <h2 class="text-center card-title">Output</h2>
                     <div class="output-container">
-                        <div class="output-result" data-result="false">XXX</div>
+                        <div class="output-result" id="output-translator" data-result="false">XXX</div>
                         <div class="output-description">Format: Decimal</div>
                     </div>
                 </div>

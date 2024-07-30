@@ -44,11 +44,20 @@ header {
 
 .nav-item > .nav-link {
     color: var(--clr-primary);
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 180ms ease-in-out;
 }
 
 .nav-item > .nav-link.active {
     background-color: var(--clr-primary);
     color: #FFF;
+}
+
+.nav-item > .nav-link:not(.active):hover {
+    background-color: var(--clr-primary-50);
+}
+
+.nav-item > .nav-link:not(.active):active {
+    background-color: var(--clr-primary-100);
 }
 
 input.form-control:focus {
@@ -71,6 +80,7 @@ input.form-control:focus {
 .btn-group > .btn.btn-outline-primary {
     border-color: var(--clr-primary);
     color: var(--clr-primary);
+    transition: color 180ms ease-in-out, background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-group > .btn-check:checked + .btn.btn-outline-primary {
@@ -141,8 +151,9 @@ input.form-control:focus {
     align-items: center;
     justify-content: center;
     flex-grow: 1;
-    font-size: 3em;
-    font-weight: 500;
+    font-size: 2em;
+    font-weight: 200;
+    text-align: center;
 }
 
 #bcd-generator .output-result, #input-translator {
@@ -151,4 +162,10 @@ input.form-control:focus {
 
 .output-result[data-result=false] {
     color: #888;
+    font-weight: 500;
+    font-size: 3em;
+}
+
+.output-description {
+    color: #AAA;
 }
