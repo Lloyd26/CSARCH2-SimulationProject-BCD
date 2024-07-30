@@ -83,7 +83,6 @@ function convertGenerator() {
     if (document.querySelector("#mode-densely-packed").checked) {
         if (input.length < 3) input = String(input).padStart(3, '0');
         let packed = bcdUnpackedPacked("packed", input).join("");
-        console.log(packed);
         setOutput(output, bcdDenselyPacked(packed).join(""));
     }
 }
