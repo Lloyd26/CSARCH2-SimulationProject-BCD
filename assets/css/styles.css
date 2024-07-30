@@ -151,8 +151,6 @@ input.form-control:focus {
     align-items: center;
     justify-content: center;
     flex-grow: 1;
-    font-size: 2em;
-    font-weight: 200;
     text-align: center;
 }
 
@@ -160,10 +158,20 @@ input.form-control:focus {
     font-family: "JetBrains Mono", monospace;
 }
 
+.output-result#output-generator {
+    font-size: 2em;
+    font-weight: 200;
+}
+
+.output-result#output-translator {
+    font-size: 3em;
+    font-weight: 300;
+}
+
 .output-result[data-result=false] {
     color: #888;
-    font-weight: 500;
-    font-size: 3em;
+    font-weight: 500 !important;
+    font-size: 3em !important;
 }
 
 .output-description {
