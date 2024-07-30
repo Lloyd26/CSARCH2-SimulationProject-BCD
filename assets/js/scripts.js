@@ -23,10 +23,12 @@ function resetForm(e) {
     if (input_generator !== null) {
         input_generator.value = "";
         document.querySelector("#error-generator").textContent = "";
+        resetOutput(document.querySelector("#output-generator"), "XXXXXXXXXX");
     }
     if (input_translator !== null) {
         input_translator.value = "";
         document.querySelector("#error-translator").textContent = "";
+        resetOutput(document.querySelector("#output-translator"), "XXX");
     }
 
     if (tab_content.querySelector("#bcd-generator") !== undefined) {
@@ -66,8 +68,18 @@ function convertGenerator(e) {
     validateInput("generator", input, error_container);
 
     if (document.querySelectorAll("input[type=radio][name=mode-generator]:checked").length === 0) {
-        error_container.textContent = "Error: Please select a BCD format."
+        error_container.textContent = "Error: Please select a BCD format.";
+        return;
     }
+
+    let output = document.querySelector("#output-generator");
+
+    if (document.querySelector("#mode-unpacked").checked || document.querySelector("#mode-packed").checked) {
+        let mode = document.querySelector("#mode-unpacked").checked ? "unpacked" : (document.querySelector("#mode-packed").checked ? "packed" : "unpacked");
+        setOutput(output, bcdUnpackedPacked(mode, input).join(" "));
+    }
+
+
 }
 
 function convertTranslator(e) {
@@ -75,4 +87,39 @@ function convertTranslator(e) {
 
     let error_container = document.querySelector("#error-translator");
     validateInput("translator", input, error_container);
+}
+
+function bcdUnpackedPacked(mode, decimal) {
+    const packed = [
+        "0000",
+        "0001",
+        "0010",
+        "0011",
+        "0100",
+        "0101",
+        "0110",
+        "0111",
+        "1000",
+        "1001"
+    ];
+
+    let result = [];
+
+    String(decimal).split('').map(v => result.push(packed[v]));
+
+    if (mode === "unpacked") {
+        result.map((v, i) => result[i] = "0000" + v);
+    }
+
+    return result;
+}
+
+function setOutput(output_container, value) {
+    output_container.setAttribute("data-result", true);
+    output_container.textContent = value;
+}
+
+function resetOutput(output_container, reset_value) {
+    output_container.setAttribute("data-result", false);
+    output_container.textContent = reset_value;
 }
