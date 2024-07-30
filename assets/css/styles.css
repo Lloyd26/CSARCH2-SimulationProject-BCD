@@ -105,7 +105,7 @@ input.form-control:focus {
     gap: 0.5rem;
 }
 
-.btn-convert, .btn-reset {
+.btn-convert, .btn-reset, .btn-save-text {
     padding: 0 2rem;
     height: 2.5em;
     line-height: 2.5em;
@@ -132,6 +132,17 @@ input.form-control:focus {
 .btn-reset:hover, .btn-reset:active, .btn-reset:focus {
     background-color: var(--clr-complementary-50) !important;
     color: var(--clr-complementary-300) !important;
+}
+
+.btn-save-text {
+    background-color: #555;
+    color: #FFF;
+    box-shadow: 2px 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-save-text:hover, .btn-save-text:active, .btn-save-text:focus {
+    background-color: #555 !important;
+    color: #FFF !important;
 }
 
 .error-container {
@@ -172,6 +183,14 @@ input.form-control:focus {
     color: #888;
     font-weight: 500 !important;
     font-size: 3em !important;
+}
+
+.output-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .output-description {
