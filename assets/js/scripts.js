@@ -13,7 +13,9 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll("input[type=radio][name=mode-generator]").forEach(bcd_mode_radio => bcd_mode_radio.addEventListener("change", function() {
         document.querySelector("#error-generator").textContent = "";
     }));
-})
+
+    document.querySelectorAll(".btn-save-text").forEach(btn_save_text => btn_save_text.addEventListener("click", saveAsText));
+});
 
 function resetForm(e) {
     let tab_content = e.currentTarget.closest(".tab-pane");
@@ -73,17 +75,19 @@ function convertGenerator() {
     }
 
     let output = document.querySelector("#output-generator");
+    let output_format = document.querySelector("input[type=radio][name=mode-generator]:checked").value;
+    let output_format_name = document.querySelector("input[type=radio][name=mode-generator]:checked").getAttribute("data-format-name");
 
     if (document.querySelector("#mode-unpacked").checked || document.querySelector("#mode-packed").checked) {
         let mode = document.querySelector("#mode-unpacked").checked ? "unpacked" : (document.querySelector("#mode-packed").checked ? "packed" : "unpacked");
-        setOutput(output, bcdUnpackedPacked(mode, input).join(" "));
+        setOutput(output, bcdUnpackedPacked(mode, input).join(" "), output_format, output_format_name, input);
     }
 
 
     if (document.querySelector("#mode-densely-packed").checked) {
-        if (input.length < 3) input = String(input).padStart(3, '0');
-        let packed = bcdUnpackedPacked("packed", input).join("");
-        setOutput(output, bcdDenselyPacked(packed).join(""));
+        //if (input.length < 3) input = String(input).padStart(3, '0');
+        let packed = bcdUnpackedPacked("packed", String(input).padStart(3, '0')).join("");
+        setOutput(output, bcdDenselyPacked(packed).join(""), output_format, output_format_name, input);
     }
 }
 
@@ -95,7 +99,7 @@ function convertTranslator() {
 
     let output = document.querySelector("#output-translator");
 
-    setOutput(output, packedToDecimal(bcdDecimal(input)));
+    setOutput(output, packedToDecimal(bcdDecimal(input)), "Decimal", "Decimal", input);
 }
 
 function bcdUnpackedPacked(mode, decimal) {
@@ -341,12 +345,69 @@ function packedToDecimal(bcd_decimal) {
     return result;
 }
 
-function setOutput(output_container, value) {
+function setOutput(output_container, value, output_format, output_format_name, input) {
     output_container.setAttribute("data-result", true);
+    output_container.setAttribute("data-result-format", output_format);
+    output_container.setAttribute("data-result-format-name", output_format_name);
+    output_container.setAttribute("data-result-input", input);
     output_container.textContent = value;
 }
 
 function resetOutput(output_container, reset_value) {
     output_container.setAttribute("data-result", false);
+    output_container.setAttribute("data-result-format", "");
+    output_container.setAttribute("data-result-format-name", "");
+    output_container.setAttribute("data-result-input", "");
     output_container.textContent = reset_value;
+}
+
+function saveAsText(e) {
+    let output = e.currentTarget.closest(".output-container").querySelector(".output-result");
+
+    if (output.getAttribute("data-result") === "false") {
+        snackbar({
+            type: "error",
+            text: "Error: Output is empty."
+        });
+        return;
+    }
+
+    let output_mode = output.getAttribute("id").split("-")[1];
+
+    let output_format = output.getAttribute("data-result-format");
+    let output_format_name = output.getAttribute("data-result-format-name");
+    let input = output.getAttribute("data-result-input");
+
+    let file_name = "BCD_" + output_format + "_" + input + ".txt";
+
+    let file_content_header = "Binary-Coded Decimal Generator and Translator";
+    let file_content_mode = "Mode: " + output_mode.charAt(0).toUpperCase() + output_mode.slice(1);
+    let file_content_input = "Input: " + input;
+    let file_content_format = "Format: " + output_format_name;
+    let file_content_output = "Output: " + output.textContent;
+
+    let file_content = file_content_header + "\n\n" + file_content_mode + "\n\n" + file_content_input + "\n" + file_content_format + "\n\n" + file_content_output;
+
+    let file_txt = new Blob([file_content], {type: "text/plain"});
+
+    window.URL = window.URL || window.webkitURL;
+    let url = window.URL.createObjectURL(file_txt);
+
+    let a = document.createElement("a");
+    a.setAttribute("href", url);
+    a.setAttribute("download", file_name);
+
+    document.body.appendChild(a);
+
+    a.click();
+
+    setTimeout(function() {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    }, 0);
+
+    snackbar({
+        type: "primary",
+        text: "Result saved into a text file with filename \"" + file_name + "\"."
+    });
 }
