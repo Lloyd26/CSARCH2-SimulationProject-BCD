@@ -1,3 +1,6 @@
+# Video Demonstration
+[![Watch the video](https://img.youtube.com/vi/jOgvcPeQX1c/maxresdefault.jpg)](https://youtu.be/jOgvcPeQX1c)
+
 # Binary-Coded Decimal Generator and Translator Simulator
 A simulator for generating an unpacked, packed, or densely-packed binary-coded decimal (BCD) from a decimal, and for translating a densely-packed BCD into decimal.
 
