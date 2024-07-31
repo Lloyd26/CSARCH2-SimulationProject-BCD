@@ -47,11 +47,7 @@ function validateInput(type, value, error_container) {
             }
             break;
         case "translator":
-            if (value.length !== 10) {
-                error_container.textContent = "Error: Binary-coded decimal (BCD) input should contain 10 bits.";
-                return false;
-            }
-            if (!/^[01]{10}$/.test(value)) {
+            if (!/^[01]{10}(?: [01]{10})*$/.test(value)) {
                 error_container.textContent = "Error: Please enter a binary-coded decimal (BCD) input.";
                 return false;
             }
@@ -86,8 +82,23 @@ function convertGenerator() {
 
     if (document.querySelector("#mode-densely-packed").checked) {
         //if (input.length < 3) input = String(input).padStart(3, '0');
-        let packed = bcdUnpackedPacked("packed", String(input).padStart(3, '0')).join("");
-        setOutput(output, bcdDenselyPacked(packed).join(""), output_format, output_format_name, input);
+        let bcd_outputs = [];
+
+        if (input.length % 3 > 0) {
+            bcd_outputs.push(input.split("").slice(0, input.length % 3).join(""));
+        }
+
+        for (let i = 0; i < Math.floor(input.length / 3); i++) {
+            let start_index = (input.length % 3) + (i * 3);
+            bcd_outputs.push(input.split("").slice(start_index, start_index + 3).join(""));
+        }
+
+        bcd_outputs.map((v, i) => {
+            let packed = bcdUnpackedPacked("packed", String(v).padStart(3, '0')).join("");
+            bcd_outputs[i] = bcdDenselyPacked(packed).join("");
+        });
+
+        setOutput(output, bcd_outputs.join(" "), output_format, output_format_name, input);
     }
 }
 
@@ -99,7 +110,13 @@ function convertTranslator() {
 
     let output = document.querySelector("#output-translator");
 
-    setOutput(output, packedToDecimal(bcdDecimal(input)), "Decimal", "Decimal", input);
+    let decimal_outputs = [];
+
+    input.split(" ").forEach(i => decimal_outputs.push(i));
+
+    decimal_outputs.map((v, i) => decimal_outputs[i] = packedToDecimal(bcdDecimal(v)));
+
+    setOutput(output, decimal_outputs.join(" "), "Decimal", "Decimal", input);
 }
 
 function bcdUnpackedPacked(mode, decimal) {
