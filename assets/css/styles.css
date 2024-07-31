@@ -17,12 +17,14 @@ header {
     position: relative;
     font-family: "Product Sans", "Roboto", sans-serif;
     font-weight: 700;
+    z-index: 2;
 }
 
 #bcd-mode-tabs {
     background-color: #FFF;
     box-shadow: 0 1px 16px rgba(0, 0, 0, 0.15);
-    z-index: -1;
+    position: relative;
+    z-index: 1;
 }
 
 .nav {
@@ -31,11 +33,16 @@ header {
     margin-right: auto;
 }
 
+.tab-content {
+    padding: 3rem;
+}
+
 .card {
     background-color: #FFF;
     box-shadow: 2px 1px 16px rgba(0, 0, 0, 0.15);
     border-radius: 0.5rem;
     border: 0;
+    padding: 3rem;
 }
 
 .col > .card {
@@ -199,4 +206,64 @@ input.form-control:focus {
 
 .output-description {
     color: #AAA;
+}
+
+@media (max-width: 1400px) {
+    .footer-container {
+        flex-direction: column;
+        justify-content: normal;
+        gap: 1rem;
+    }
+
+    .error-container {
+        text-align: center;
+    }
+
+    .btn-convert-container {
+        width: 100%;
+    }
+
+    .btn-convert-container > .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .tab-content {
+        padding: 1.5rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    .btn-group > .btn.btn-outline-primary {
+        font-size: 0.8em;
+    }
+
+    .output-result {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .nav {
+        width: 100%;
+    }
+
+    .tab-content {
+        padding: 0;
+    }
+
+    .row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 1rem;
+        padding-top: 1rem;
+        flex-direction: column;
+    }
+
+    .card {
+        border-radius: 0;
+    }
 }
