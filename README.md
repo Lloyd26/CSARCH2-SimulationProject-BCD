@@ -1,4 +1,5 @@
 # Video Demonstration
+[Youtube Video](https://youtu.be/jOgvcPeQX1c)
 [![Watch the video](https://img.youtube.com/vi/jOgvcPeQX1c/maxresdefault.jpg)](https://youtu.be/jOgvcPeQX1c)
 
 # Binary-Coded Decimal Generator and Translator Simulator
