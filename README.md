@@ -6,8 +6,8 @@ Web App Link: https://bcd-generator-translator.pages.dev/
 It supports the following features:
 - Decimal to Unpacked BCD
 - Decimal to Packed BCD
-- Decimal to Densely-Packed BCD
-- Densely-Packed BCD to Decimal
+- Decimal to Densely Packed BCD
+- Densely Packed BCD to Decimal
 
 It can also save the output result into a text file.
 
