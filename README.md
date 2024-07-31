@@ -23,6 +23,8 @@ For instance, if the decimal input is `128`, then its unpacked BCD equivalent is
 | ---------- | ---------- | ---------- |
 | 1          | 2          | 8          |
 
+![Decimal to Unpacked BCD](docs/images/1%20-%20Decimal%20to%20Unpacked%20BCD.png)
+
 ## Test Case 2: Decimal to Packed BCD
 
 Converting a decimal into packed BCD is similar to the process of converting into unpacked BCD. The only difference is that the output contains 4 bits (nibble) per decimal digit. This saves space than unpacked BCD as it removes the unnecessary bits.
@@ -32,6 +34,8 @@ In this case, if the decimal input is `128`, then its packed BCD equivalent is `
 | `0001` | `0010` | `1000` |
 | ------ | ------ | ------ |
 | 1      | 2      | 8      |
+
+![Decimal to Packed BCD](docs/images/2%20-%20Decimal%20to%20Packed%20BCD.png)
 
 ## Test Case 3: Decimal to Densely Packed BCD
 
@@ -74,6 +78,8 @@ Example: Converting decimal input `128` into densely packed BCD
 | `0` | `0` | `1` | `0` | `1` | `0` | `1` | `0` | `0` | `0` |
 
 **Output**: `0010101000`
+
+![Decimal to Densely Packed BCD](docs/images/3%20-%20Decimal%20to%20Densely%20Packed%20BCD.png)
 
 ## Test Case 4: Densely Packed BCD to Decimal
 
@@ -127,3 +133,5 @@ Example: Converting densely packed BCD input `0010101000` into decimal
     | 1      | 2      | 8      |
 
 **Output**: 128
+
+![Densely Packed BCD to Decimal](docs/images/4%20-%20Densely%20Packed%20BCD%20to%20Decimal.png)
