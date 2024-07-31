@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/includes/ripple/ripple.css">
     <script src="assets/includes/ripple/ripple.js"></script>
+    <link rel="stylesheet" href="assets/includes/snackbar/snackbar.css">
+    <script src="assets/includes/snackbar/snackbar.js"></script>
     <script src="assets/js/scripts.js"></script>
     <title>BCD Generator and Translator</title>
 </head>
@@ -39,11 +41,11 @@
                     </div>
                     <div class="mb-3">
                         <div class="btn-group">
-                            <input type="radio" class="btn-check" name="mode-generator" id="mode-unpacked">
+                            <input type="radio" class="btn-check" name="mode-generator" id="mode-unpacked" value="Unpacked" data-format-name="Unpacked BCD">
                             <label for="mode-unpacked" class="btn btn-outline-primary ripple" data-ripple-theme="dark">Unpacked BCD</label>
-                            <input type="radio" class="btn-check" name="mode-generator" id="mode-packed">
+                            <input type="radio" class="btn-check" name="mode-generator" id="mode-packed" value="Packed" data-format-name="Packed BCD">
                             <label for="mode-packed" class="btn btn-outline-primary ripple" data-ripple-theme="dark">Packed BCD</label>
-                            <input type="radio" class="btn-check" name="mode-generator" id="mode-densely-packed">
+                            <input type="radio" class="btn-check" name="mode-generator" id="mode-densely-packed" value="DenselyPacked" data-format-name="Densely Packed BCD">
                             <label for="mode-densely-packed" class="btn btn-outline-primary ripple" data-ripple-theme="dark">Densely Packed BCD</label>
                         </div>
                     </div>
