@@ -1,9 +1,5 @@
-# Video Demonstration
-[Youtube Video](https://youtu.be/jOgvcPeQX1c)
-[![Watch the video](https://img.youtube.com/vi/jOgvcPeQX1c/maxresdefault.jpg)](https://youtu.be/jOgvcPeQX1c)
-
 # Binary-Coded Decimal Generator and Translator Simulator
-A simulator for generating an unpacked, packed, or densely-packed binary-coded decimal (BCD) from a decimal, and for translating a densely-packed BCD into decimal.
+A simulator for generating an unpacked, packed, or densely packed binary-coded decimal (BCD) from a decimal, and for translating a densely packed BCD into decimal.
 
 Web App Link: https://bcd-generator-translator.pages.dev/
 
@@ -14,6 +10,10 @@ It supports the following features:
 - Densely Packed BCD to Decimal
 
 It can also save the output result into a text file.
+
+## Video Demonstration
+Video Demo Link: https://youtu.be/jOgvcPeQX1c
+[![Video Demonstration](https://img.youtube.com/vi/jOgvcPeQX1c/maxresdefault.jpg)](https://youtu.be/jOgvcPeQX1c)
 
 ---
 
